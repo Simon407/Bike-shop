@@ -16,7 +16,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="viw">
-                    <a href="/goods/${bike.id}">Quick View</a>
+                    <a href="/goods/${bike.id}">View</a>
                 </div>
             </li>
         </#list>

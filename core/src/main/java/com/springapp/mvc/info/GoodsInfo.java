@@ -1,10 +1,14 @@
 package com.springapp.mvc.info;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 /**
  * Основная информация о товаре
  */
+@Entity
+@Table(name = "h_goods")
 public class GoodsInfo {
 
     /**

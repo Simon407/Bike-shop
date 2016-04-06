@@ -1,11 +1,8 @@
-<#--<#macro mainPage title="Bike Shop | Home" styles=[] scripts=[] >-->
-
 <#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<#--<title>${title}</title>-->
     <title>Bike Shop | Home</title>
     <link href="/resources/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- jQuery (Bootstrap's JavaScript plugins) -->

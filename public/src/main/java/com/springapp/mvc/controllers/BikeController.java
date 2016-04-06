@@ -1,5 +1,6 @@
 package com.springapp.mvc.controllers;
 
+import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
 import com.springapp.mvc.services.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,9 +27,6 @@ public class BikeController {
     private static final Long MAIN_ID = 1L;
 
     @Autowired
-    private MenuService menuService;
-
-    @Autowired
     private GoodsService goodsService;
 
 //    @Autowired
@@ -44,11 +42,10 @@ public class BikeController {
      * <p>
      * число категорий - 3, если ввести другое значение id то будт 404 страница
      */
-
+    @IncludeMenuInfo
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String renderCatalogById(@PathVariable("id") Long id, @RequestParam(value = "page", required = false, defaultValue = "1")
             Integer page, Long limit, ModelMap model) {
-        model.addAttribute("listMenu", menuService.getCategoryForMenu());
         // TODO: сделать нормальное отображение всех товаров по категориям - страницы, лимит на страницах
         if (id >= 1 && id <= 3) {
             model.addAttribute("goods", goodsService.getGoodsByTypeId(MAIN_ID,id));
@@ -70,10 +67,10 @@ public class BikeController {
      * По 4 товара на каждую категорию
      * MainId - id главной категории товара т.е. "велосипеды"
      */
+    @IncludeMenuInfo
     @RequestMapping(method = RequestMethod.GET)
     public String renderCatalog(ModelMap model) {
         model.addAttribute("goods", goodsService.getGoodsForMainCategoryPage(MAIN_ID));
-        model.addAttribute("listMenu", menuService.getCategoryForMenu());
         return "bicycles";
     }
 }

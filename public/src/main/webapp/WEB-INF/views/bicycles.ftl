@@ -1,44 +1,11 @@
 <#-- @ftlvariable name="goods" type="java.util.List<com.springapp.mvc.info.GoodsInfo>" -->
 <#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
 <#-- @ftlvariable name="limit" type="java.lang.Integer" -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bike Shop | Bicycles</title>
-    <link href="/resources/css/bootstrap.css" rel='stylesheet' type='text/css'/>
-    <!-- jQuery (Bootstrap's JavaScript plugins) -->
-    <script src="/resources/js/jquery.min.js"></script>
-    <!-- Custom Theme files -->
-    <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!-- Custom Theme files -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <!--webfont-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
-    <!--webfont-->
-    <!-- dropdown -->
-    <script src="/resources/js/jquery.easydropdown.js"></script>
-    <link href="/resources/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-<#--<script src="/resources/js/scripts.js" type="text/javascript"></script>-->
-    <!--js-->
+<#include "template.ftl">
+<@mainTemplate title="Bike Shop | 404 Error" />
+<#macro m_body>
 
-</head>
-<body>
-<!--banner-->
-<div class="banner-bg banner-sec">
-
-<#include "components/header.ftl" />
-
-</div>
-<!--/banner-->
-
-<#assign index=0>
+<#--<#assign index=0>-->
 
 <div class="bikes">
     <#list listMenu as menu>
@@ -103,8 +70,5 @@
             </#list></#if></#list>
 </div>
 
-<#include "components/footer.ftl" />
-
-</body>
-</html>
+</#macro>
 

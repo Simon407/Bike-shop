@@ -1,13 +1,19 @@
 package com.springapp.mvc.info;
 
+import javax.persistence.*;
+
 /**
  * Информация о категории
  */
+@Entity
+@Table(name = "h_categories")
 public class CategoryInfo {
 
     /**
      * id раздела
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long mainId;
 
     /**

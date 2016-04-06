@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bike Shop | Cart</title>
-    <link href="/resources/css/bootstrap.css" rel='stylesheet' type='text/css'/>
-    <!-- jQuery (Bootstrap's JavaScript plugins) -->
-    <script src="/resources/js/jquery.min.js"></script>
-    <!-- Custom Theme files -->
-    <link href="/resources/css/form.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!-- Custom Theme files -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <!--webfont-->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400' rel='stylesheet' type='text/css'>
-    <!--webfont-->
-    <!-- dropdown -->
-    <script src="/resources/js/jquery.easydropdown.js"></script>
-    <link href="/resources/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-<#--<script src="/resources/js/scripts.js" type="text/javascript"></script>-->
-    <!--js-->
+<#-- @ftlvariable name="Session.cart" type="com.springapp.mvc.info.CartInfo" -->
+<#-- @ftlvariable name="goods" type="java.util.List<com.springapp.mvc.info.GoodsInfo>" -->
 
-</head>
-<body>
-<!--banner-->
-<div class="banner-bg banner-sec">
+<#include "template.ftl">
+<@mainTemplate title="Bike Shop | 404 Error" />
+<#macro m_body>
 
-<#include "components/header.ftl" />
-
-</div>
-<!--/banner-->
 <div class="cart">
     <div class="container">
         <div class="cart-top">
@@ -42,69 +12,50 @@
         </div>
 
         <div class="col-md-9 cart-items">
-            <h2>My Shopping Bag (0)</h2>
 
-            <#--<script>$(document).ready(function (c) {-->
-                <#--$('.close1').on('click', function (c) {-->
-                    <#--$('.cart-header').fadeOut('slow', function (c) {-->
-                        <#--$('.cart-header').remove();-->
+        <#if (Session.cart.goods)??>
+            <h2>My Shopping Bag (${Session.cart.getAllCount()})</h2>
+
+            <#list Session.cart.goods?keys as goodId>
+
+                <#--<script>$(document).ready(function (c) {-->
+                    <#--$('.close${goodId}').on('click', function (c) {-->
+                        <#--$('.cart-header${goodId}').fadeOut('slow', function (c) {-->
+                            <#--$('.cart-header${goodId}').remove();-->
+                        <#--});-->
                     <#--});-->
                 <#--});-->
-            <#--});-->
-            <#--</script>-->
-            <#---->
-            <#--<div class="cart-header">-->
-                <#--<div class="close1"></div>-->
-                <#--<div class="cart-sec">-->
-                    <#--<div class="cart-item cyc">-->
-                        <#--<img src="/resources/images/bik6.jpg"/>-->
-                    <#--</div>-->
-                    <#--<div class="cart-item-info">-->
-                        <#--<h3>MOUNTAIN HOPPER(XS R034)<span>Model No: 3578</span></h3>-->
-                        <#--<h4><span>Rs. $ </span>5800.00</h4>-->
-                        <#--<p class="qty">Qty ::</p>-->
-                        <#--<input min="1" type="number" id="quantity" name="quantity" value="1"-->
-                               <#--class="form-control input-small">-->
-                    <#--</div>-->
-                    <#--<div class="clearfix"></div>-->
-                    <#--<div class="delivery">-->
-                        <#--<p>Service Charges:: Rs.100.00</p>-->
-                        <#--<span>Delivered in 2-3 bussiness days</span>-->
-                        <#--<div class="clearfix"></div>-->
-                    <#--</div>-->
-                <#--</div>-->
-            <#--</div>-->
-            <#---->
-            <#--<script>$(document).ready(function (c) {-->
-                <#--$('.close2').on('click', function (c) {-->
-                    <#--$('.cart-header2').fadeOut('slow', function (c) {-->
-                        <#--$('.cart-header2').remove();-->
-                    <#--});-->
-                <#--});-->
-            <#--});-->
-            <#--</script>-->
-            <#---->
-            <#--<div class="cart-header2">-->
-                <#--<div class="close2"></div>-->
-                <#--<div class="cart-sec">-->
-                    <#--<div class="cart-item">-->
-                        <#--<img src="/resources/images/a3.png"/>-->
-                    <#--</div>-->
-                    <#--<div class="cart-item-info">-->
-                        <#--<h3>RIDE HELMET<span>Model No: 8768</span></h3>-->
-                        <#--<h4><span>Rs. $ </span>200.00</h4>-->
-                        <#--<p class="qty">Qty ::</p>-->
-                        <#--<input min="1" type="number" id="quantity" name="quantity" value="1"-->
-                               <#--class="form-control input-small">-->
-                    <#--</div>-->
-                    <#--<div class="clearfix"></div>-->
-                    <#--<div class="delivery">-->
-                        <#--<p>Service Charges:: Rs.100.00</p>-->
-                        <#--<span>Delivered in 2-3 bussiness days</span>-->
-                        <#--<div class="clearfix"></div>-->
-                    <#--</div>-->
-                <#--</div>-->
-            <#--</div>-->
+                <#--</script>-->
+
+                <#list goods as good>
+                    <#if good.id == goodId>
+                        <div class="cart-header${goodId}">
+                            <div class="close">
+                                <form action="/cart" method="post">
+                                    <input name="move" style="display:none" value="delete"/>
+                                    <input name="id" style="display:none" value="${good.id}"/>
+                                    <input type="submit" value="">
+                                </form>
+                            </div>
+                            <div class="cart-sec">
+                                <div class="cart-item cyc">
+                                    <img src="${good.picLink}"/>
+                                </div>
+                                <div class="cart-item-info">
+                                    <h3>${good.name}<span>Model No: ${good.modelNo}</span></h3>
+                                    <h4><span>Rs. $ </span>${good.price}</h4>
+                                    <p class="qty">Qty :: </p>
+                                    <input min="1" type="number" id="quantity" name="quantity" value="1"
+                                           class="form-control input-small">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </#if>
+                </#list>
+            </#list>
+        <#else>  <h2>My Shopping Bag (0)</h2>
+        </#if>
 
         </div>
 
@@ -124,18 +75,8 @@
             <span class="total final">6350.00</span>
             <div class="clearfix"></div>
             <a class="order" href="#">Place Order</a>
-            <#--<div class="total-item">-->
-                <#--<h3>OPTIONS</h3>-->
-                <#--<h4>COUPONS</h4>-->
-                <#--<a class="cpns" href="#">Apply Coupons</a>-->
-                <#--<p><a href="#">Log In</a> to use accounts - linked coupons</p>-->
-            <#--</div>-->
         </div>
     </div>
 </div>
 
-<#include "components/footer.ftl" />
-
-</body>
-</html>
-
+</#macro>

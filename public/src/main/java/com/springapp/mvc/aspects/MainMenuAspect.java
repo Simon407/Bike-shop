@@ -31,7 +31,7 @@ public class MainMenuAspect {
 
     @Before("includeMenuInfoMethod()")
     public void includeMenuInfo() {
-        List<MenuInfo> listMenu = menuService.getMainMenu();
+        List<MenuInfo> listMenu = menuService.getCategoryForMenu();
         request.setAttribute(MAIN_MENU_LIST, listMenu);
     }
 }

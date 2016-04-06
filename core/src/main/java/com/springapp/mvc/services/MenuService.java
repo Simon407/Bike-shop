@@ -35,7 +35,7 @@ public class MenuService {
         List<CategoryInfo> by = new ArrayList<CategoryInfo>();
         by.add(new CategoryInfo(1L, 1L, "MOUNTAIN BIKES", "/bicycles/1", "/resources/images/c1.jpg", "Exclusive Mountain Bikes"));
         by.add(new CategoryInfo(1L, 2L, "SINGLE SPEED BIKES", "/bicycles/2", "/resources/images/c2.jpg", "Are you ready for the 27.5 Revolution ?"));
-        by.add(new CategoryInfo(1L, 3L, "ROAD BIKES", "/bicycles", "/resources/images/c3.jpg", "Street Playground"));
+        by.add(new CategoryInfo(1L, 3L, "ROAD BIKES", "/bicycles/3", "/resources/images/c3.jpg", "Street Playground"));
 
         List<CategoryInfo> pa = new ArrayList<CategoryInfo>();
         pa.add(new CategoryInfo(2L, 1L, "CHAINS", "/parts"));
