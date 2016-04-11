@@ -1,4 +1,4 @@
-package com.springapp.mvc.info;
+package com.springapp.mvc.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -6,14 +6,16 @@ import java.math.BigDecimal;
 /**
  * Основная информация о товаре
  */
-
-public class GoodsInfo {
+@Entity
+@Table(name = "h_goods")
+public class Goods {
 
     /**
-     * Ссылка на картинку товара
+     * id товара
      */
-    private String picLink;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long id;
     /**
      * Название товара
      */
@@ -25,29 +27,29 @@ public class GoodsInfo {
     private String modelNo;
 
     /**
-     * id товара
-     */
-    private Long id;
-
-    /**
      * Цена
      */
     private BigDecimal price;
 
     /**
-     * id главной категории товара
+     * Ссылка на картинку товара
      */
-    private Long mainId;
-
+    private String picLink;
     /**
      * id категории товара
      */
-    private Long typeId;
+    @ManyToOne(cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id")
+    private Category typeId;
 
     /**
      * id бренда товара
      */
-    private Long brandId;
+    @ManyToOne(cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id")
+    private Brand brandId;
 
     /**
      * описание товара
@@ -78,6 +80,15 @@ public class GoodsInfo {
         this.price = price;
     }
 
+
+    public Brand getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Brand brandId) {
+        this.brandId = brandId;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -86,10 +97,10 @@ public class GoodsInfo {
         this.description = description;
     }
 
-    public GoodsInfo() {
+    public Goods() {
     }
 
-    public GoodsInfo(Long id) {
+    public Goods(Long id) {
         this.id = id;
     }
 
@@ -109,37 +120,19 @@ public class GoodsInfo {
         this.picLink = picLink;
     }
 
-    public Long getMainId() {
-        return mainId;
-    }
-
-    public void setMainId(Long mainId) {
-        this.mainId = mainId;
-    }
-
-    public Long getTypeId() {
+    public Category getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Long typeId) {
+    public void setTypeId(Category typeId) {
         this.typeId = typeId;
     }
 
-    public Long getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
-    }
-
-    public GoodsInfo(String picLink, String name, String modelNo, Long id, BigDecimal price, Long mainId, Long typeId, Long brandId, String description) {
-        this.picLink = picLink;
+    public Goods(String name, String modelNo, BigDecimal price, String picLink, Category typeId, Brand brandId, String description) {
         this.name = name;
         this.modelNo = modelNo;
-        this.id = id;
         this.price = price;
-        this.mainId = mainId;
+        this.picLink = picLink;
         this.typeId = typeId;
         this.brandId = brandId;
         this.description = description;

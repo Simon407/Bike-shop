@@ -70,6 +70,7 @@ public class BikeController {
     @IncludeMenuInfo
     @RequestMapping(method = RequestMethod.GET)
     public String renderCatalog(ModelMap model) {
+        model.addAttribute("good", goodsService.getAllGoods());
         model.addAttribute("goods", goodsService.getGoodsForMainCategoryPage(MAIN_ID));
         return "bicycles";
     }

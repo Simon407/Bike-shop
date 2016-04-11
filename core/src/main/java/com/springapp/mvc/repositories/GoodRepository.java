@@ -1,15 +1,19 @@
 package com.springapp.mvc.repositories;
 
-import com.springapp.mvc.info.GoodsInfo;
+import com.springapp.mvc.entity.Goods;
+
+import java.util.List;
 
 
 public interface GoodRepository {
 
-    void addGood(GoodsInfo goodInfo);
+    void addGood(Goods goodInfo);
 
-    void updateGood(GoodsInfo goodInfo);
+    void updateGood(Goods goodInfo);
 
     void deleteGood(Long goodId);
 
-    GoodsInfo getGoodById(Long goodId);
+    Goods getGoodById(Long goodId);
+
+    public List<Goods> getAllGoods();
 }

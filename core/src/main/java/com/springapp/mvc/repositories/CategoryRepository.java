@@ -1,9 +1,9 @@
 package com.springapp.mvc.repositories;
 
 
-import com.springapp.mvc.info.CategoryInfo;
+import com.springapp.mvc.entity2.Category;
 
 public interface CategoryRepository {
 
-    void addCategory(CategoryInfo categoryInfo);
+    void addCategory(Category category);
 }

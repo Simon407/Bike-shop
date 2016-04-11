@@ -1,8 +1,13 @@
 package com.springapp.mvc.services;
 
+import com.springapp.mvc.entity.Goods;
 import com.springapp.mvc.info.GoodsInfo;
+import com.springapp.mvc.repositories.GoodRepository;
+import com.springapp.mvc.repositories.hibernate.GoodRepositoryHibernate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +17,26 @@ import java.util.List;
  */
 @Service
 public class GoodsService {
+
+    @Autowired
+    private GoodRepository goodRepository;
+
+    @Transactional
+    public void addGood(Goods goodsInfo) {
+        goodRepository.addGood(goodsInfo);
+    }
+
+    @Transactional
+    public List<Goods> getAllGoods() {
+        return goodRepository.getAllGoods();
+    }
+
     /**
      * Получаем описание товаров
      */
     public List<GoodsInfo> getGoodsDescription() {
         List<GoodsInfo> goodsInfoList = new ArrayList<GoodsInfo>();
+
         goodsInfoList.add(new GoodsInfo("/resources/images/bik1.jpg", "BIG BOY", "3498", 1L, new BigDecimal(300), 1L, 1L, 1L, "The first mechanically-propelled, " +
                 "two-wheeled vehicle may have been built by Kirkpatrick MacMillan, a Scottish blacksmith, in 1839, " +
                 "although the claim is often disputed. He is also associated with the first recorded instance of a " +
@@ -78,7 +98,6 @@ public class GoodsService {
      * Получение товаров по айди категории
      *
      * @return лист товаров
-     *
      */
     public List<GoodsInfo> getGoodsByTypeId(Long mainid, Long typeid) {
         List<GoodsInfo> goodsInfoList = new ArrayList<GoodsInfo>();
@@ -94,7 +113,6 @@ public class GoodsService {
      * Получение 4х товаров по айди основной категории
      *
      * @return лист товаров
-     *
      */
     public List<GoodsInfo> getGoodsForMainCategoryPage(Long mainid) {
         List<GoodsInfo> goodsInfoList = new ArrayList<GoodsInfo>();
@@ -120,7 +138,6 @@ public class GoodsService {
      * Получение товаров по айди основной категории т.е. "Веловипеды", "Запчасти"
      *
      * @return лист товаров
-     *
      */
     public List<GoodsInfo> getGoodsByMainId(Long id) {
         List<GoodsInfo> goodsInfoList = new ArrayList<GoodsInfo>();
@@ -136,7 +153,6 @@ public class GoodsService {
      * Получение товаров по их айди
      *
      * @return лист товаров
-     *
      */
     public List<GoodsInfo> getGoodsById(Long id) {
         List<GoodsInfo> goodsInfoList = new ArrayList<GoodsInfo>();

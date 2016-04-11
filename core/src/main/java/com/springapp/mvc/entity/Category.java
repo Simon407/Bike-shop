@@ -1,24 +1,40 @@
-package com.springapp.mvc.info;
+package com.springapp.mvc.entity;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Информация о категории
  */
-public class CategoryInfo {
+@Entity
+@Table(name = "h_categories")
+public class Category{
 
     /**
      * id раздела
      */
-    private Long parentId;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parentId;
 
     /**
      * id категории
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     /**
      * Название категории
      */
     private String name;
+
+
+    /**
+     * Список дочерних категорий
+     */
+    @OneToMany(mappedBy = "parentId")
+    private List<Category> children;
 
     /**
      * Ссылка на соответствующий раздел
@@ -35,23 +51,21 @@ public class CategoryInfo {
      */
     private String description;
 
-    public CategoryInfo() {
+    public Category() {
     }
 
-    public CategoryInfo(Long parentId, Long id, String name, String link, String picLink, String description) {
+    public Category(Category parentId, String name, String link) {
         this.parentId = parentId;
-        this.id = id;
+        this.name = name;
+        this.link = link;
+    }
+
+    public Category(Category parentId, String name, String link, String picLink, String description) {
+        this.parentId = parentId;
         this.name = name;
         this.link = link;
         this.picLink = picLink;
         this.description = description;
-    }
-
-    public CategoryInfo(Long parentId, Long id, String name, String link) {
-        this.parentId = parentId;
-        this.id = id;
-        this.name = name;
-        this.link = link;
     }
 
     public String getPicLink() {
@@ -62,11 +76,11 @@ public class CategoryInfo {
         this.picLink = picLink;
     }
 
-    public Long getParentId() {
+    public Category getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(Category parentId) {
         this.parentId = parentId;
     }
 
@@ -100,5 +114,22 @@ public class CategoryInfo {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public List<Category> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Category> children) {
+        this.children = children;
+    }
+
+    public Category(Category parentId, String name, List<Category> children, String link, String picLink, String description) {
+        this.parentId = parentId;
+        this.name = name;
+        this.children = children;
+        this.link = link;
+        this.picLink = picLink;
+        this.description = description;
     }
 }

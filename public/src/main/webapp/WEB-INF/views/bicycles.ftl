@@ -1,4 +1,5 @@
 <#-- @ftlvariable name="goods" type="java.util.List<com.springapp.mvc.info.GoodsInfo>" -->
+<#-- @ftlvariable name="good" type="java.util.List<com.springapp.mvc.entity2.Goods>" -->
 <#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
 <#-- @ftlvariable name="limit" type="java.lang.Integer" -->
 <#include "template.ftl">
@@ -8,6 +9,9 @@
 <#--<#assign index=0>-->
 
 <div class="bikes">
+    <#list good as good1>
+        <h4>${good1.name}<span>Model: ${good1.modelNo}</span></h4>
+    </#list>
     <#list listMenu as menu>
         <#if menu.listCategory?has_content && menu.id == 1>
             <#list menu.listCategory as category>
