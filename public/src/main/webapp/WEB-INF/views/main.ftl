@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
+<#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.entity.Category>" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,8 +57,8 @@
         <div class="categorie-grids">
 
         <#list listMenu as menu>
-            <#if menu.listCategory?has_content && menu.id == 1>
-                <#list menu.listCategory as category>
+            <#if menu.children?has_content && menu.id == 1>
+                <#list menu.children as category>
                     <div class="col-md-4 cate-grid grid1" style="background:url(${category.picLink}) no-repeat;">
                         <a href="${menu.link}"><h4>${category.name}</h4></a>
                         <p>${category.description}</p>

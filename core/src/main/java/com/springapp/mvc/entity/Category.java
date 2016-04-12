@@ -54,6 +54,11 @@ public class Category{
     public Category() {
     }
 
+    public Category(Long id) {
+        this.id = id;
+    }
+
+
     public Category(Category parentId, String name, String link) {
         this.parentId = parentId;
         this.name = name;

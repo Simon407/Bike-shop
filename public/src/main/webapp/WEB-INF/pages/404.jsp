@@ -29,62 +29,11 @@
 </head>
 <body>
 <!--banner-->
-<script src="../../resources/js/responsiveslides.min.js"></script>
-<script>
-    $(function () {
-        $("#slider").responsiveSlides({
-            auto: false,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks",
-            pager: true,
-        });
-    });
-</script>
 <div class="banner-bg banner-sec">
     <div class="container">
         <div class="header">
             <div class="logo">
                 <a href="/"><img src="../../resources/images/logo.png" alt=""/></a>
-            </div>
-            <div class="top-nav">
-                <label class="mobile_menu" for="mobile_menu">
-                    <span>Menu</span>
-                </label>
-                <input id="mobile_menu" type="checkbox">
-                <ul class="nav">
-                    <li class="dropdown1"><a href="/bicycles">BICYCLES</a>
-                        <ul class="dropdown2">
-                            <li><a href="/bicycles">FIXED / SINGLE SPEED</a></li>
-                            <li><a href="/bicycles">CITY BIKES</a></li>
-                            <li><a href="/bicycles">PREMIMUN SERIES</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown1"><a href="/parts">PARTS</a>
-                        <ul class="dropdown2">
-                            <li><a href="/parts">CHAINS</a></li>
-                            <li><a href="/parts">TUBES</a></li>
-                            <li><a href="/parts">TIRES</a></li>
-                            <li><a href="/parts">DISC BREAKS</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown1"><a href="/accessories">ACCESSORIES</a>
-                        <ul class="dropdown2">
-                            <li><a href="/accessories">LOCKS</a></li>
-                            <li><a href="/accessories">HELMETS</a></li>
-                            <li><a href="/accessories">ARM COVERS</a></li>
-                            <li><a href="/accessories">JERSEYS</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown1"><a href="/extras">EXTRAS</a>
-                        <ul class="dropdown2">
-                            <li><a href="/extras">CLASSIC BELL</a></li>
-                            <li><a href="/extras">BOTTLE CAGE</a></li>
-                            <li><a href="/extras">TRUCK GRIP</a></li>
-                        </ul>
-                    </li>
-                    <a class="shop" href="/cart"><img src="../../resources/images/cart.png" alt=""/></a>
-                </ul>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -106,14 +55,6 @@
     <div class="container wrap">
         <div class="logo2">
             <a href="/"><img src="../../resources/images/logo2.png" alt=""/></a>
-        </div>
-        <div class="ftr-menu">
-            <ul>
-                <li><a href="/bicycles">BICYCLES</a></li>
-                <li><a href="/parts">PARTS</a></li>
-                <li><a href="accessories.html">ACCESSORIES</a></li>
-                <li><a href="/extras">EXTRAS</a></li>
-            </ul>
         </div>
         <div class="clearfix"></div>
     </div>

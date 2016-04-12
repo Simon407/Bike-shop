@@ -1,5 +1,6 @@
 package com.springapp.mvc.aspects;
 
+import com.springapp.mvc.entity.Category;
 import com.springapp.mvc.info.MenuInfo;
 import com.springapp.mvc.services.MenuService;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,6 +20,7 @@ import java.util.List;
 public class MainMenuAspect {
 
     private static final String MAIN_MENU_LIST = "listMenu";
+    private static final String MAIN_MENU = "mainMenu";
 
     @Autowired
     private HttpServletRequest request;
@@ -31,7 +33,9 @@ public class MainMenuAspect {
 
     @Before("includeMenuInfoMethod()")
     public void includeMenuInfo() {
-        List<MenuInfo> listMenu = menuService.getCategoryForMenu();
+        List<Category> listMenu = menuService.getAllCategory();
+        List<Category> mainMenu = menuService.getMainMenu();
         request.setAttribute(MAIN_MENU_LIST, listMenu);
+        request.setAttribute(MAIN_MENU, mainMenu);
     }
 }

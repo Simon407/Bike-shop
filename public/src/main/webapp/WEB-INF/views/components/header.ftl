@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
+<#-- @ftlvariable name="mainMenu" type="java.util.List<com.springapp.mvc.entity.Category>" -->
     <div class="container">
         <div class="header">
             <div class="logo">
@@ -11,11 +11,12 @@
                 <input id="mobile_menu" type="checkbox">
                 <ul class="nav">
 
-                    <#list listMenu as menu>
+                    <#list mainMenu as menu>
                     <li class="dropdown1"><a href="${menu.link}">${menu.name}</a>
-                        <#if menu.listCategory?has_content>
+                        <#if menu.children?has_content>
+                            <#--&& menu.id == 1>-->
                         <ul class="dropdown2">
-                            <#list menu.listCategory as category>
+                            <#list menu.children as category>
                             <li><a href="${category.link}">${category.name}</a></li>
                             </#list>
                         </ul>

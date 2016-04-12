@@ -1,17 +1,19 @@
 package com.springapp.mvc.repositories.hibernate;
 
+import com.springapp.mvc.entity.Category;
 import com.springapp.mvc.entity.Goods;
-import com.springapp.mvc.repositories.GoodRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Repository
-public class GoodRepositoryHibernate implements GoodRepository {
+public class GoodRepositoryHibernate {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -20,43 +22,53 @@ public class GoodRepositoryHibernate implements GoodRepository {
         return sessionFactory.getCurrentSession();
     }
 
-    @Override
     public void addGood(Goods goodInfo) {
         curSession().save(goodInfo);
     }
 
-    @Override
     public void updateGood(Goods goodInfo) {
-        curSession().update(goodInfo);
-        // а если его еще нет, то лучше сохранить его
-//        curSession().saveOrUpdate(goodInfo);
+        curSession().saveOrUpdate(goodInfo);
     }
 
-    @Override
     public void deleteGood(Long goodId) {
-        // удаление происходит только по сравнению id, поэтому весь объект нам и не нужен
         curSession().delete(new Goods(goodId));
     }
 
-    @Override
     public Goods getGoodById(Long goodId) {
-        // 1. It will always return a “proxy” (Hibernate term) without hitting the database.
-        //    In Hibernate, proxy is an object with the given identifier value,
-        //    its properties are not initialized yet, it just look like a temporary fake object.
-        // 2. If no row found , it will throws an ObjectNotFoundException.
-//        return (GoodInfo) curSession().load(GoodInfo.class, goodId);
-
-        // 1. It always hit the database and return the real object,
-        //    an object that represent the database row, not proxy.
-        // 2. If no row found , it return null.
         return (Goods) curSession().get(Goods.class, goodId);
-
-        // Запрос через Критерий. Можно и так. Но зачем?
-//        return (GoodInfo) curSession().createCriteria(GoodInfo.class).add(Restrictions.idEq(goodId));
     }
 
-    @Override
+    public List<Goods> getGoodsByTypeId(Long typeId) {
+        List<Goods> goods = new ArrayList<Goods>();
+        try {
+            goods = (List<Goods>) curSession().createQuery("select new list(g.id, g.name,g.modelNo, g.price, g.picLink, g.typeId, g.brandId, g.description) from Goods g " +
+                    "where g.typeId = :typeId")
+                    .setLong("typeId", typeId)
+                    .list();
+        } catch (Exception e) {
+            System.err.println("Error in getAllGoods(): " + e.getMessage());
+        }
+        return goods;
+    }
+
+    // FIXME: вынести в сервис
+    public List<Goods> getGoodsByMainId(Long mainId) {
+        Category c = (Category) curSession().get(Category.class, mainId);
+        List<Long> list = new ArrayList<Long>();
+        for (Category ca : c.getChildren()) {
+            if (!list.contains(ca.getId())) {
+                list.add(ca.getId());
+            }
+        }
+        List<Goods> goods = null;
+        for (Long l : list) {
+            List<Goods> listGoods = (List<Goods>) curSession().createCriteria(Goods.class).add(Restrictions.eq("type_id", l.toString())).list();
+            if (!listGoods.isEmpty()) goods.addAll(listGoods);
+        }
+        return goods;
+    }
+
     public List<Goods> getAllGoods() {
-        return sessionFactory.getCurrentSession().createCriteria(Goods.class).list();
+        return curSession().createCriteria(Goods.class).list();
     }
 }

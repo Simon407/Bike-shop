@@ -35,7 +35,7 @@ public class CartController {
     @IncludeMenuInfo
     @RequestMapping(method = RequestMethod.GET)
     public String renderCart() {
-        request.setAttribute("goods", goodsService.getGoodsDescription());
+        request.setAttribute("goods", goodsService.getAllGoods());
         return "cart";
     }
 
@@ -51,7 +51,7 @@ public class CartController {
         String id = request.getParameter("id");
         if (id != null) {
             Long goodId = Long.valueOf(id);
-            model.addAttribute("goods", goodsService.getGoodsDescription());
+            model.addAttribute("goods", goodsService.getAllGoods());
             if (move.equals("add")) {
                 cartService.addInCart(request.getSession(), goodId, 1);
             } else {

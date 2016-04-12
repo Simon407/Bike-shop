@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.info.MenuInfo>" -->
+<#-- @ftlvariable name="listMenu" type="java.util.List<com.springapp.mvc.entity.Category>" -->
 <script src="/resources/js/responsiveslides.min.js"></script>
 <script>
     $(function () {
@@ -18,8 +18,8 @@
             <ul class="rslides" id="slider">
 
             <#list listMenu as menu>
-                <#if menu.listCategory?has_content && menu.id == 1>
-                    <#list menu.listCategory as category>
+                <#if menu.children?has_content && menu.id == 1>
+                    <#list menu.children as category>
                         <li><h1>${category.name}</h1></li>
                     </#list>
                 </#if>

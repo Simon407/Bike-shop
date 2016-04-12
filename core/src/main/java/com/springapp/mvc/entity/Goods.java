@@ -137,4 +137,5 @@ public class Goods {
         this.brandId = brandId;
         this.description = description;
     }
+
 }

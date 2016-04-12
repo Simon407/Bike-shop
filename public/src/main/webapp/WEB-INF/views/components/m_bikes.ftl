@@ -1,5 +1,5 @@
-<#-- @ftlvariable name="bikes" type="java.util.List<com.springapp.mvc.info.GoodsInfo>" -->
-<div class="bikes">
+<#-- @ftlvariable name="bikes" type="java.util.List<com.springapp.mvc.entity.Goods>" -->
+<div class="bikes" style =" height: 585px;">
     <h3>POPULAR BIKES</h3>
     <div class="bikes-grids">
         <ul id="flexiselDemo1">

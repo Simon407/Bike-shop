@@ -1,7 +1,7 @@
 package com.springapp.mvc.repositories;
 
 
-import com.springapp.mvc.entity2.Category;
+import com.springapp.mvc.entity.Category;
 
 public interface CategoryRepository {
 

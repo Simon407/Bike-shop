@@ -1,6 +1,6 @@
 package com.springapp.mvc.info;
 
-import com.springapp.mvc.entity2.User;
+import com.springapp.mvc.entity.User;
 
 import java.util.Map;
 
