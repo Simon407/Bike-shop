@@ -1,5 +1,6 @@
 <#-- @ftlvariable name="good" type="com.springapp.mvc.entity.Goods" -->
 <#-- @ftlvariable name="Session.cart" type="com.springapp.mvc.info.CartInfo" -->
+<#-- @ftlvariable name="Session.cart2" type="java.util.List<com.springapp.mvc.entity.Cart>" -->
 <#include "template.ftl">
 <#if good?has_content>
     <@mainTemplate title="Bike Shop | ${good.name}" />

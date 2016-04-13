@@ -7,10 +7,6 @@
 
 <div class="cart">
     <div class="container">
-        <div class="cart-top">
-            <a href="/"><< home</a>
-        </div>
-
         <div class="col-md-9 cart-items">
 
             <#if (Session.cart.goods)??>

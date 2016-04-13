@@ -15,6 +15,7 @@ public class User {
     private String hashPass;
     private String fio;
     private String role;
+    private String phone;
 
     @OneToMany(mappedBy = "userId")
     private List<Order> orders ;
@@ -38,6 +39,24 @@ public class User {
         this.fio = fio;
         this.role = role;
         this.orders = orders;
+    }
+
+    public User(boolean enable, String login, String hashPass, String fio, String role, String phone, List<Order> orders) {
+        this.enable = enable;
+        this.login = login;
+        this.hashPass = hashPass;
+        this.fio = fio;
+        this.role = role;
+        this.phone = phone;
+        this.orders = orders;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<Order> getOrders() {
