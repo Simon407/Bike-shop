@@ -1,8 +1,5 @@
 package com.springapp.mvc.form;
 
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.Size;
 
 public class AddressFormBean {

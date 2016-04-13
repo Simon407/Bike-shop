@@ -5,10 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * По этой аннотации в request добавляется список категорий для меню из MainMenuAspect
- */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface IncludeMenuInfo {
+public @interface IncludeCategoryMenu {
 }

@@ -138,4 +138,11 @@ public class Goods {
         this.description = description;
     }
 
+    public Goods(Long id,String name, String modelNo, BigDecimal price, String description) {
+        this.id = id;
+        this.name = name;
+        this.modelNo = modelNo;
+        this.price = price;
+        this.description = description;
+    }
 }

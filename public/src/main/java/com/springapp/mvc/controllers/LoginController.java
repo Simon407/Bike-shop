@@ -1,6 +1,6 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
+import com.springapp.mvc.aspects.annotation.IncludeCategoryMenu;
 import com.springapp.mvc.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class LoginController {
     @Autowired
     private CartService cartService;
 
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String renderLoginPage(Boolean error) {
         request.setAttribute("error", error);

@@ -1,18 +1,13 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
-import com.springapp.mvc.entity.Goods;
+import com.springapp.mvc.aspects.annotation.IncludeCategoryMenu;
 import com.springapp.mvc.services.GoodsService;
-import com.springapp.mvc.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 @RequestMapping("/goods")
@@ -26,11 +21,9 @@ public class GoodsController {
      *
      * @param goodId id товара
      */
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String renderGoodPage(@PathVariable("id") Long goodId, ModelMap model) {
-        //TODO details-product-slider- откуда картинки доставать и ссылки? freemarker только листы поддерживает?
-        //TODO дописать проверку на размер goods
         if (goodsService.getGoodsById(goodId) != null) {
             model.addAttribute("good", goodsService.getGoodsById(goodId));
             return "goods";

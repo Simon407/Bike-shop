@@ -90,10 +90,11 @@
                 <span class="total final"> $ ${totalPrise+150}</span>
                 <#if ((Session.cart.goods)?? && Session.cart.allCount !=0)>
                     <div class="clearfix"></div>
-                    <a class="order" href="/login">Login or Reg</a>
+                    <a class="orders" href="/login">Login or Reg</a>
                 <#else >
                     <div class="clearfix"></div>
-                    <a class="order" href="/order">Place Order</a>
+                    <a class="order"> <button input type="submit" onclick="buyProducts()">Place Order</button></a>
+                    <#--<a class="order" href="/cart/buy">Place Order</a>-->
                 </#if>
 
             <#else >

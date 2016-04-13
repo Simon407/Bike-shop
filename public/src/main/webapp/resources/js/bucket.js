@@ -1,4 +1,3 @@
-
 //Добавление товара в корзину
 function addBucket(id) {
     $.ajax({
@@ -30,16 +29,30 @@ function deleteProduct(id) {
 }
 // Изменение количества товаров в корзине
 function changeNumberProduct(id) {
-    var numberProduct = $('#numberProduct'+id).val();
+    var numberProduct = $('#numberProduct' + id).val();
+    if (numberProduct > 0 && numberProduct < 16) {
+        $.ajax({
+            url: "/cart/changeNumberProduct",
+            type: "POST",
+            data: {
+                id: id,
+                number: numberProduct
+            },
+            success: function () {
+                alert('Изменено');
+                return true;
+            }
+        })
+    }else alert('Количество может быть от 1 до 15');
+}
+
+function buyProducts() {
     $.ajax({
-        url: "/cart/changeNumberProduct",
+        url: "/cart/buy",
         type: "POST",
-        data: {
-            id: id,
-            number: numberProduct
-        },
         success: function () {
-            alert('Изменено');
+            alert('Оформлено');
+            window.location.href = "/cabinet/orders";
             return true;
         }
     })

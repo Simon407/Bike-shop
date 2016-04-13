@@ -31,11 +31,6 @@ public class OrderService {
        return repositoryHibernate.getOrderById(id);
     }
 
-//    @Transactional
-//    public Order getOrderByUserId(Long userId) {
-//        return repositoryHibernate.getOrderByUserId(userId);
-//    }
-
     @Transactional
     private List<Order> getAllOrders() {
         return repositoryHibernate.getAllOrders();

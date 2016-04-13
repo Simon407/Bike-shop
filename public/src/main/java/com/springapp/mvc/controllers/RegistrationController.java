@@ -1,6 +1,6 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
+import com.springapp.mvc.aspects.annotation.IncludeCategoryMenu;
 import com.springapp.mvc.entity.User;
 import com.springapp.mvc.form.RegistrationFormBean;
 import com.springapp.mvc.services.UserService;
@@ -30,7 +30,7 @@ public class RegistrationController {
     /**
      * Отображение страницы регистрации
      */
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(method = RequestMethod.GET)
     public String renderRegistrationPage() {
         request.setAttribute(ATTR_REGISTRATION_FORM, new RegistrationFormBean());
@@ -40,7 +40,7 @@ public class RegistrationController {
     /**
      * Обработка формы Регистрации
      */
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(method = RequestMethod.POST)
     public String registrationForm(
             @Valid @ModelAttribute(ATTR_REGISTRATION_FORM) RegistrationFormBean rfb,

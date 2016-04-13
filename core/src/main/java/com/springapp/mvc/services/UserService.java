@@ -2,7 +2,6 @@ package com.springapp.mvc.services;
 
 import com.springapp.mvc.entity.User;
 import com.springapp.mvc.repositories.hibernate.UserRepositoryHibernate;
-import com.springapp.mvc.security.MyUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +18,11 @@ public class UserService {
     @Transactional
     public void add(User user) {
         userRepository.add(user);
+    }
+
+    @Transactional
+    public void update(User user) {
+        userRepository.update(user);
     }
 
     public User getUserByLogin(String login) {

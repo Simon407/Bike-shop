@@ -1,13 +1,10 @@
 package com.springapp.mvc.info;
 
-import com.springapp.mvc.entity.User;
-
 import java.util.Map;
 
-/**
- * Содержимое корзины
- */
-
+/*
+* Содержимое корзины не залогиненных юзеров, которая хранится в сессии
+*/
 public class CartInfo {
 
     /**

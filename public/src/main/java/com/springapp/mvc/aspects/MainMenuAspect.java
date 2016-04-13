@@ -11,9 +11,6 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Аспект для добавления списка категорий в меню шапки сайта
- */
 @Aspect
 @Component
 public class MainMenuAspect {
@@ -26,11 +23,11 @@ public class MainMenuAspect {
     @Autowired
     private MenuService menuService;
 
-    @Pointcut("@annotation(com.springapp.mvc.aspects.annotation.IncludeMenuInfo)")
-    public void includeMenuInfoMethod() {
+    @Pointcut("@annotation(com.springapp.mvc.aspects.annotation.IncludeCategoryMenu)")
+    public void includeCategoryMenuMethod() {
     }
 
-    @Before("includeMenuInfoMethod()")
+    @Before("includeCategoryMenuMethod()")
     public void includeMenuInfo() {
         List<Category> listMenu = menuService.getAllCategory();
         List<Category> mainMenu = menuService.getMainMenu();

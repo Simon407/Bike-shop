@@ -35,12 +35,6 @@ public class GoodsService {
 //    public List<Goods> getGoodsByTypeId(Long typeId) {
 //        return goodRepository.getGoodsByTypeId(typeId);
 //    }
-//
-//    // FIXME: не интегрируется с шаблоном ftl
-//    @Transactional
-//    public List<Goods> getGoodsByMainId(Long mainId) {
-//        return goodRepository.getGoodsByMainId(mainId);
-//    }
 
     /**
      * Получение товаров по айди категории

@@ -17,29 +17,34 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User userId;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
-    private Address addressId;
+    private String address;
 
     private Date creationTime;
     private BigDecimal totalSum;
     private String status;
     private Date payTime;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderId", cascade = CascadeType.ALL)
     private List<Cart> cart;
 
     public Order() {
     }
 
-    public Order(User userId, Address addressId, Date creationTime, BigDecimal totalSum, String status, Date payTime) {
+    public Order(User userId, String address, Date creationTime, BigDecimal totalSum, String status, Date payTime) {
         this.userId = userId;
-        this.addressId = addressId;
+        this.address = address;
         this.creationTime = creationTime;
         this.totalSum = totalSum;
         this.status = status;
         this.payTime = payTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public List<Cart> getCart() {
@@ -64,14 +69,6 @@ public class Order {
 
     public void setUserId(User userId) {
         this.userId = userId;
-    }
-
-    public Address getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
     }
 
     public Date getCreationTime() {

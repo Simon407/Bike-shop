@@ -14,8 +14,8 @@
 
            <h2 style=" margin-bottom: 0.7em;">Order number : ${order.id}</h2>
             <h3>Creation date : ${order.creationTime}</h3>
-            <h3>Total price(with delivery charges) : $ ${order.totalSum}</h3>
-            <a href="/cabinet/address"><h3>Delivery address(link)</h3></a>
+            <h3>Total price(with delivery charges = $ 150) : $ ${order.totalSum}</h3>
+           <h3>Delivery address : ${order.address}</h3>
             <a class="continue" href="/cabinet" style="width: 300px; margin: 2em auto 2em auto;">Go to cabinet</a>
             <h3 style=" margin-bottom: 1em;">Goods list : </h3>
 
@@ -30,7 +30,7 @@
                                     <h4>${cart.goodId.name}<span>Model: ${cart.goodId.modelNo}</span></h4>
                                 </div>
                                 <div class="bike-cart">
-                                    <a class="buy" href="/goods/${cart.goodId.id}">${cart.goodId.price}</a>
+                                    <a class="buy" href="/goods/${cart.goodId.id}">${cart.goodId.price} * ${cart.number}</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

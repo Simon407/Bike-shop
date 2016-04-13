@@ -51,7 +51,6 @@ public class GoodRepositoryHibernate {
         return goods;
     }
 
-    // FIXME: вынести в сервис
     public List<Goods> getGoodsByMainId(Long mainId) {
         Category c = (Category) curSession().get(Category.class, mainId);
         List<Long> list = new ArrayList<Long>();

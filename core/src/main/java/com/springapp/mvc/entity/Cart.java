@@ -29,6 +29,10 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private User userId;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order orderId;
 
     public User getUserId() {
         return userId;
@@ -74,6 +78,14 @@ public class Cart {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public Order getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Order orderId) {
+        this.orderId = orderId;
     }
 
     //    /**

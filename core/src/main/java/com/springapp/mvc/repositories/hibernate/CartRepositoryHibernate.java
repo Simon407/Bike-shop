@@ -42,16 +42,6 @@ public class CartRepositoryHibernate {
         return (Cart) curSession().get(Cart.class, id);
     }
 
-//    Can not set java.lang.Long field com.springapp.mvc.entity.User.id to java.lang.Long
-//    public List<Cart> getCartsByUserId(Long userId) {
-//        return (List<Cart>) curSession().createCriteria(Cart.class)
-//                .add(Restrictions.eq("userId", userId)).list();
-//
-////        Query query = curSession().createQuery("from Cart where userId = :user_id ");
-////        query.setParameter("user_id", userId);
-////        return query.list();
-//    }
-
     public List<Cart> getCartsByUserId(Long userId) {
         List<Cart> carts = new ArrayList<Cart>();
         try {

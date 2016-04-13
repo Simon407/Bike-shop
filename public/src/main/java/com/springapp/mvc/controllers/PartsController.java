@@ -1,6 +1,6 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
+import com.springapp.mvc.aspects.annotation.IncludeCategoryMenu;
 import com.springapp.mvc.entity.Goods;
 import com.springapp.mvc.services.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +38,10 @@ public class PartsController {
      * <p>
      * число категорий - 4, если ввести другое значение id то будт 404 страница
      */
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String renderCatalogById(@PathVariable("id") Long id, @RequestParam(value = "page", required = false, defaultValue = "1")
             Integer page, Long limit, ModelMap model) {
-        // TODO: сделать нормальное отображение всех товаров по категориям - страницы, лимит на страницах
         List<Goods> list = goodsService.getGoodsByTypeId(id);
         if (id >= 8 && id <= 11 && (!list.isEmpty())) {
             model.addAttribute("mainId", MAIN_ID);
@@ -65,10 +64,9 @@ public class PartsController {
      * По 4 товара на каждую категорию
      * MainId - id главной категории товара т.е. "запчасти"
      */
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(method = RequestMethod.GET)
     public String renderCatalog(ModelMap model) {
-        // TODO: по 4 товара в категории сделать аяксом
         model.addAttribute("mainId", MAIN_ID);
         model.addAttribute("goods", goodsService.getGoodsByMainId(MAIN_ID));
         return "parts";

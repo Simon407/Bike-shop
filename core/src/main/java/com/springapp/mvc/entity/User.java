@@ -35,6 +35,16 @@ public class User {
         this.phone = phone;
     }
 
+    public User(Long id,boolean enable, String login, String hashPass, String fio, String role, String phone) {
+        this.id = id;
+        this.enable = enable;
+        this.login = login;
+        this.hashPass = hashPass;
+        this.fio = fio;
+        this.role = role;
+        this.phone = phone;
+    }
+
     public String getPhone() {
         return phone;
     }

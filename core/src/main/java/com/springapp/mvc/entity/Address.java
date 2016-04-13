@@ -9,8 +9,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH},
-            fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User userId;
 
@@ -21,6 +20,25 @@ public class Address {
     private String index;
 
     public Address() {
+    }
+
+    public Address(Long id, User userId, String city, String street, String house, String flat, String index) {
+        this.id = id;
+        this.userId = userId;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.flat = flat;
+        this.index = index;
+    }
+
+    public Address(Long id, String city, String street, String house, String flat, String index) {
+        this.id = id;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.flat = flat;
+        this.index = index;
     }
 
     public Address(User userId, String city, String street, String house, String flat, String index) {

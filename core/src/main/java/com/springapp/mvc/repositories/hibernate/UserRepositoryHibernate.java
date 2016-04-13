@@ -19,6 +19,12 @@ public class UserRepositoryHibernate{
 
     public void add(User user) {
         curSession().saveOrUpdate(user);
+        curSession().flush();
+    }
+
+    public void update(User user) {
+        curSession().update(user);
+        curSession().flush();
     }
 
     public User getUserByLogin(String login) {

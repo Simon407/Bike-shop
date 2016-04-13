@@ -1,6 +1,7 @@
 package com.springapp.mvc.services;
 
 import com.springapp.mvc.entity.Cart;
+import com.springapp.mvc.entity.Order;
 import com.springapp.mvc.entity.User;
 import com.springapp.mvc.info.CartInfo;
 import com.springapp.mvc.repositories.hibernate.CartRepositoryHibernate;
@@ -72,7 +73,7 @@ public class CartService {
     private List<Cart> getCartsByUserId(Long userId) {
         List<Cart> carts = new ArrayList<Cart>();
         for (Cart c : getAllCarts()) {
-            if (c.getUserId().getId().equals(userId)) {
+            if (c.getUserId() != null && c.getUserId().getId().equals(userId)) {
                 carts.add(c);
             }
         }
@@ -187,5 +188,18 @@ public class CartService {
             username = principal.toString();
         }
         return username;
+    }
+
+    public void addInOrder( Order order) {
+        String username = getAut();
+        if (!username.equals("anonymousUser")) {
+            MyUserDetail m = (MyUserDetail) userDetailService.loadUserByUsername(username);
+            List<Cart> list = getCartsByUserId(m.getUser().getId());
+            for (Cart c : list) {
+                c.setOrderId(order);
+                c.setUserId(null);
+                addCart(c);
+            }
+        }
     }
 }

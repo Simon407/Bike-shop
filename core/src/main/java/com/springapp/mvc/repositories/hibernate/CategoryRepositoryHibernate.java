@@ -1,7 +1,6 @@
 package com.springapp.mvc.repositories.hibernate;
 
 import com.springapp.mvc.entity.Category;
-import com.springapp.mvc.repositories.CategoryRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

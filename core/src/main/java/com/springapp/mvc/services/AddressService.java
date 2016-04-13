@@ -22,19 +22,24 @@ public class AddressService {
     }
 
     @Transactional
-    private void delete(Address address) {
+    public void delete(Address address) {
         addressRepositoryHibernate.delete(address);
+    }
+
+    @Transactional
+    public Address getAddressById(Long id) {
+        return addressRepositoryHibernate.getAddressById(id);
+    }
+
+    @Transactional
+    public void update(Address address) {
+        addressRepositoryHibernate.update(address);
     }
 
     @Transactional
     private List<Address> getAllAddress() {
         return addressRepositoryHibernate.getAllAddress();
     }
-
-//    @Transactional
-//    public Address getAddressByUserId(Long userId) {
-//        return addressRepositoryHibernate.getAddressByUserId(userId);
-//    }
 
     public Address getAddressByUserId(Long userId) {
         List<Address> carts = new ArrayList<Address>();
@@ -46,5 +51,15 @@ public class AddressService {
         if(carts.size() != 0){
             return carts.get(0);
         }else return null;
+    }
+
+    public List<Address> getListAddressByUserId(Long userId) {
+        List<Address> carts = new ArrayList<Address>();
+        for (Address c : getAllAddress()) {
+            if (c.getUserId().getId().equals(userId)) {
+                carts.add(c);
+            }
+        }
+        return carts;
     }
 }

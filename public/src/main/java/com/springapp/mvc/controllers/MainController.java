@@ -1,6 +1,6 @@
 package com.springapp.mvc.controllers;
 
-import com.springapp.mvc.aspects.annotation.IncludeMenuInfo;
+import com.springapp.mvc.aspects.annotation.IncludeCategoryMenu;
 import com.springapp.mvc.services.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class MainController {
     @Autowired
     private GoodsService goodsService;
 
-    @IncludeMenuInfo
+    @IncludeCategoryMenu
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         model.addAttribute("bikes",goodsService.getGoodsByMainId(1L).subList(1,6));

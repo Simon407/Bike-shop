@@ -1599,7 +1599,7 @@ h4.last-price {
     border-left: 1px solid;
 }
 
-a.order {
+a.orders {
     background: #333;
     padding: 10px 1.5em;
     border-radius: 7px;
@@ -1613,7 +1613,21 @@ a.order {
     margin: 3em auto 0 auto;
 }
 
-a.order:hover {
+a.order button{
+    background: #333;
+    padding: 10px 1.5em;
+    border-radius: 7px;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    width: 85%;
+    margin: 3em auto 0 auto;
+}
+
+a.order button:hover {
     background: orange;
 }
 

@@ -29,8 +29,17 @@ public class AddressRepositoryHibernate {
                 .add(Restrictions.eq("user_id", id)).uniqueResult();
     }
 
+    public Address getAddressById(Long id) {
+        return (Address) curSession().get(Address.class, id);
+    }
+
     public void delete(Address address) {
         curSession().delete(address);
+        curSession().flush();
+    }
+
+    public void update(Address address) {
+        curSession().update(address);
         curSession().flush();
     }
 
