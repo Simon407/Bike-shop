@@ -50,9 +50,9 @@ public class RegistrationController {
         }
         String login = rfb.getEmail();
         if(userService.getUserByLogin(login) == null){
-            userService.add(new User(true, rfb.getEmail(),  DigestUtils.md5Hex(rfb.getPassword()), rfb.getFio(), "ROLE_USER", rfb.getPhone(), null));
+            userService.add(new User(true, rfb.getEmail(),  DigestUtils.md5Hex(rfb.getPassword()), rfb.getFio(), "ROLE_USER", rfb.getPhone()));
             System.out.println(DigestUtils.md5Hex(rfb.getPassword()));
-            return "registrationTrue";
-        }else return "registrationFalse";
+            return "components/registrationTrue";
+        }else return "components/registrationFalse";
     }
 }

@@ -1,10 +1,6 @@
 package com.springapp.mvc.services;
 
 import com.springapp.mvc.entity.Category;
-import com.springapp.mvc.info.CategoryInfo;
-import com.springapp.mvc.info.MenuInfo;
-import com.springapp.mvc.repositories.CategoryRepository;
-import com.springapp.mvc.repositories.GoodRepository;
 import com.springapp.mvc.repositories.hibernate.CategoryRepositoryHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

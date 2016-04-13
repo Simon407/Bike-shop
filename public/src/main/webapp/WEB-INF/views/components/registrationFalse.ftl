@@ -1,4 +1,4 @@
-<#include "template.ftl">
+<#include "../template.ftl">
 <@mainTemplate title="Bike Shop | Success" />
 <#macro m_body>
 

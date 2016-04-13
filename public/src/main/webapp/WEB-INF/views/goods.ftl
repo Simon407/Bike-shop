@@ -1,6 +1,4 @@
 <#-- @ftlvariable name="good" type="com.springapp.mvc.entity.Goods" -->
-<#-- @ftlvariable name="Session.cart" type="com.springapp.mvc.info.CartInfo" -->
-<#-- @ftlvariable name="Session.cart2" type="java.util.List<com.springapp.mvc.entity.Cart>" -->
 <#include "template.ftl">
 <#if good?has_content>
     <@mainTemplate title="Bike Shop | ${good.name}" />
@@ -54,16 +52,7 @@
                             <h4></h4>
                             <p><label>$</label>${good.price}</p>
                             <div class="btn_form">
-                                <#if (Session.cart.goods)?? && Session.cart.containsGoodId(good.id)>
-                                    <a href="/cart">Go in cart</a>
-                                <#else>
-                                    <form action="/cart" method="post">
-                                        <input name="move" style="display:none" value="add"/>
-                                        <input name="id" style="display:none" value="${good.id}"/>
-                                        <input type="submit" value="ADD TO CART">
-                                    </form>
-                                <#--<a href="/cart/${good.id}" data-id="${good.id}">ADD TO CART</a>-->
-                                </#if>
+                               <button input type="submit" onclick="addBucket(${good.id})">ADD TO CART</button>
                             </div>
                             <div class="bike-type">
                                 <p>TYPE ::<a href="${good.typeId.link}">${good.typeId.name}</a></p>

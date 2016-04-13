@@ -15,7 +15,8 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "good_id")
     private Goods goodId;
 
@@ -23,7 +24,7 @@ public class Cart {
     /**
      * айди клиента
      */
-    @ManyToOne(cascade = {CascadeType.REFRESH},
+    @ManyToOne(cascade = {CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User userId;
@@ -44,6 +45,11 @@ public class Cart {
         this.goodId = goodId;
         this.number = number;
         this.userId = userId;
+    }
+
+    public Cart(Goods goodId, Integer number) {
+        this.goodId = goodId;
+        this.number = number;
     }
 
     public Long getId() {

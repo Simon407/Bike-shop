@@ -27,20 +27,19 @@ public class Order {
     private String status;
     private Date payTime;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Cart> cart;
 
     public Order() {
     }
 
-    public Order(User userId, Address addressId, Date creationTime, BigDecimal totalSum, String status, Date payTime, List<Cart> cart) {
+    public Order(User userId, Address addressId, Date creationTime, BigDecimal totalSum, String status, Date payTime) {
         this.userId = userId;
         this.addressId = addressId;
         this.creationTime = creationTime;
         this.totalSum = totalSum;
         this.status = status;
         this.payTime = payTime;
-        this.cart = cart;
     }
 
     public List<Cart> getCart() {

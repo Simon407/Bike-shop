@@ -1,19 +1,14 @@
 package com.springapp.mvc;
 
-import com.springapp.mvc.info.CategoryInfo;
-import com.springapp.mvc.info.GoodsInfo;
 import com.springapp.mvc.repositories.CategoryRepository;
 import com.springapp.mvc.repositories.GoodRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
 public class CreateTable {
 

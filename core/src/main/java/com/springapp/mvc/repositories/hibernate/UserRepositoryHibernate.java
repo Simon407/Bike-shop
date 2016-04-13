@@ -18,11 +18,15 @@ public class UserRepositoryHibernate{
     }
 
     public void add(User user) {
-        curSession().save(user);
+        curSession().saveOrUpdate(user);
     }
 
     public User getUserByLogin(String login) {
         return (User) curSession().createCriteria(User.class)
                 .add(Restrictions.eq("login", login)).uniqueResult();
+    }
+
+    public User getUserById(Long goodId) {
+        return (User) curSession().get(User.class, goodId);
     }
 }

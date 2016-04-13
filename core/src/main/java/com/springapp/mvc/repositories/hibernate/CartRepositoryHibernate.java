@@ -2,11 +2,15 @@ package com.springapp.mvc.repositories.hibernate;
 
 import com.springapp.mvc.entity.Cart;
 import com.springapp.mvc.entity.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CartRepositoryHibernate {
@@ -19,15 +23,49 @@ public class CartRepositoryHibernate {
     }
 
     public void add(Cart cart) {
-        curSession().save(cart);
+        curSession().saveOrUpdate(cart);
+        curSession().flush();
     }
 
     public void delete(Cart cart) {
         curSession().delete(cart);
+        curSession().flush();
     }
 
-    public Cart getCartsByUserId(String userId) {
-        return (Cart) curSession().createCriteria(User.class)
-                .add(Restrictions.eq("user_id", userId)).uniqueResult();
+    public int deleteCartByGoodsId(Long goodId) {
+        Query query =  curSession().createQuery("delete from Cart where goodId = :param");
+        query.setLong("param", goodId);
+        return query.executeUpdate();
+    }
+
+    public Cart getCartById(Long id) {
+        return (Cart) curSession().get(Cart.class, id);
+    }
+
+//    Can not set java.lang.Long field com.springapp.mvc.entity.User.id to java.lang.Long
+//    public List<Cart> getCartsByUserId(Long userId) {
+//        return (List<Cart>) curSession().createCriteria(Cart.class)
+//                .add(Restrictions.eq("userId", userId)).list();
+//
+////        Query query = curSession().createQuery("from Cart where userId = :user_id ");
+////        query.setParameter("user_id", userId);
+////        return query.list();
+//    }
+
+    public List<Cart> getCartsByUserId(Long userId) {
+        List<Cart> carts = new ArrayList<Cart>();
+        try {
+            carts = (List<Cart>) curSession().createQuery("select new list(c.id, c.goodId, c.userId, c.number) from Cart c " +
+                    "where c.userId = :userId")
+                    .setLong("userId", userId)
+                    .list();
+        } catch (Exception e) {
+            System.err.println("Error in getAllGoods(): " + e.getMessage());
+        }
+        return carts;
+    }
+
+    public List<Cart> getAllCarts() {
+        return curSession().createCriteria(Cart.class).list();
     }
 }

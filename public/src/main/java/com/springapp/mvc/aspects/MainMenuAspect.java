@@ -1,7 +1,6 @@
 package com.springapp.mvc.aspects;
 
 import com.springapp.mvc.entity.Category;
-import com.springapp.mvc.info.MenuInfo;
 import com.springapp.mvc.services.MenuService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

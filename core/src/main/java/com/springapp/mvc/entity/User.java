@@ -17,38 +17,22 @@ public class User {
     private String role;
     private String phone;
 
-    @OneToMany(mappedBy = "userId")
-    private List<Order> orders ;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId", cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId", cascade = CascadeType.ALL)
+    private List<Cart> cart;
 
     public User() {
     }
 
-    public User(Long id, boolean enable, String login, String hashPass, String fio, String role) {
-        this.id = id;
-        this.enable = enable;
-        this.login = login;
-        this.hashPass = hashPass;
-        this.fio = fio;
-        this.role = role;
-    }
-
-    public User(boolean enable, String login, String hashPass, String fio, String role, List<Order> orders) {
-        this.enable = enable;
-        this.login = login;
-        this.hashPass = hashPass;
-        this.fio = fio;
-        this.role = role;
-        this.orders = orders;
-    }
-
-    public User(boolean enable, String login, String hashPass, String fio, String role, String phone, List<Order> orders) {
+    public User(boolean enable, String login, String hashPass, String fio, String role, String phone) {
         this.enable = enable;
         this.login = login;
         this.hashPass = hashPass;
         this.fio = fio;
         this.role = role;
         this.phone = phone;
-        this.orders = orders;
     }
 
     public String getPhone() {
@@ -57,14 +41,6 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
     }
 
     public Long getId() {
@@ -113,5 +89,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Cart> cart) {
+        this.cart = cart;
     }
 }

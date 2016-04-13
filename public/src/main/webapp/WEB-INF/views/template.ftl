@@ -6,6 +6,7 @@
     <link href="/resources/css/bootstrap.css" rel='stylesheet' type='text/css'/>
     <!-- jQuery (Bootstrap's JavaScript plugins) -->
     <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/bucket.js"></script>
     <!-- Custom Theme files -->
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/resources/css/form.css" rel="stylesheet" type="text/css" media="all"/>

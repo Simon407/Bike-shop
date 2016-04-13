@@ -850,8 +850,8 @@ h3.m_2 {
 }
 
 .bike-parts {
-    float: right;
-    width: 78%;
+    /*float: right;*/
+    width: 130%;
 }
 
 .top {
@@ -1152,6 +1152,22 @@ a.length {
 }
 
 .btn_form input {
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-size: 1em;
+    padding: 10px 34px;
+    background: rgb(150, 150, 150);
+    border: 1px solid rgb(150, 150, 150);
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn_form button {
     border: none;
     outline: none;
     display: inline-block;
@@ -1468,6 +1484,21 @@ p.qty {
     transition: color 0.2s ease-in-out;
 }
 
+.close button {
+    background: url('../images/close.png') no-repeat 0px 0px;
+    border: 1px solid rgb(0, 116, 169);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    /*position: absolute;*/
+    right: 0px;
+    top: 0px;
+    -webkit-transition: color 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
 .close1, .close2 {
     background: url('../images/close.png') no-repeat 0px 0px;
     cursor: pointer;
@@ -1519,7 +1550,7 @@ a.continue {
     font-weight: 600;
     text-align: center;
     width: 72%;
-    margin: 0px auto 3em auto;
+    margin: 0em auto 3em auto;
 }
 
 a.continue:hover {

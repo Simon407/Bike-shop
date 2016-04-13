@@ -15,25 +15,11 @@ public class CartInfo {
      */
     private Map<Long, Integer> goods;
 
-    /**
-     * айди клиента
-     */
-    private User userId;
-
-    public CartInfo(Map<Long, Integer> goods, User userId) {
+    public CartInfo(Map<Long, Integer> goods) {
         this.goods = goods;
-        this.userId = userId;
-    }
-
-    public User getUserId() {
-        return userId;
     }
 
     public CartInfo() {
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
     }
 
     public Map<Long, Integer> getGoods() {
